@@ -87,6 +87,22 @@ img {
 #news .page-title {
     text-align: center;
 }
+/* MWNU */
+#menu {
+    background-image: url(../images/menu-bg.jpg);
+    min-height: 100vh;
+}
+.menu-content {
+    max-width: 560px;
+    margin-top: 10%;
+}
+.menu-content .page-title {
+    text-align: center;
+}
+.menu-content p {
+    font-size: 1.125rem;
+    margin: 10px 0 0;
+}
 /* footer---------------------*/
 footer {
     background: #432;
@@ -182,6 +198,14 @@ aside p {
 .sub-menu a:hover {
     color:#0bd;
 }
+.grid {
+    display: grid;
+    gap: 26px;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 6%;
+    margin-bottom: 50px;
+}
+
 
 @media (max-width: 600px) {
     .page-title {
@@ -240,5 +264,9 @@ aside p {
     .post-title,
     .post-cat {
         margin-left: 80px;
+    }
+    /* MENU */
+    .menu-content {
+        margin-top: 20%;
     }
 }
