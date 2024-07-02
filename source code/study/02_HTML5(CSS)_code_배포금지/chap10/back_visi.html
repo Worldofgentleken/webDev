@@ -1,0 +1,28 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Transform style</title>
+<!--[if lt IE 9]>
+<script src="html5shiv.js"></scirpt>
+<![endif]-->
+<style>
+img {border:1px solid black;}
+.ex img{
+	backface-visibility:visible;
+/*	backface-visibility:hidden; */
+	transform-origin:center;
+	-webkit-transform-origin:center;
+	transform:rotateX(110deg);
+	-webkit-transform:rotateX(110deg);
+}
+</style>
+</head>
+
+<body>
+<div>
+	<div class="ex"><img src="sunset.jpg"></div>
+</div>
+<div><img src="sunset.jpg"></div>
+</body>
+</html>
