@@ -11,7 +11,7 @@ var t_station = prompt("지하철 정거장 수를 입력하세요.", "0");
 
 if (t_station < 8){
     var result = t_station * 3;
-}else{
+} else {
     var result = 7 * 3 + (t_station-7) * 2;
 }
 console.log(`총 이동 시간은 ${result}입니다.`);
