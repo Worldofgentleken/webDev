@@ -38,12 +38,14 @@ console.log(totalMoney);
 // 1부터 시작 홀수의 합을 구한다, 합이 10000을 넘지 않는 마지막 수는?
 var oddSum = 0;
 var lastOdd = 0;
-for (i = 1; i > 0; i++){
-    if(oddSum > 10000){
-        break;
-    } else if (i % 2 != 0){
-        oddSum += i;
+
+for (var i = 1; ; i += 2) { // i를 1부터 시작하여 매번 2씩 증가시킴
+    if (oddSum + i > 10000) {
+        break; // 합이 10000을 넘으면 루프 종료
     }
+    oddSum += i; // 홀수를 합계에 더함
+    lastOdd = i; // 마지막으로 더한 홀수를 저장
 }
-console.log((i-1), (oddSum-i));
+
+console.log(`합계가 10000을 넘지 않는 마지막 홀수: ${lastOdd}, 총합: ${oddSum}`); // 마지막 홀수와 합계 출력
 
