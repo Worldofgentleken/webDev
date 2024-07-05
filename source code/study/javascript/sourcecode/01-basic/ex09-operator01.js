@@ -62,7 +62,7 @@ a *= 2;
 a /= 3;
 console.log(a);
 
-
+//다음 예시의 출력 결과 이해하기
 var a = 5, b = 6, c = 10, d = 0;
 var bo = false;
 d = ++a * b--;
@@ -72,8 +72,8 @@ console.log(a, b, c, d);
 a = 1;
 b = 0;
 bo = a++ > 0 || 1 < ++b * d-- / ++c;
-console.log(a, b, c, d);
+console.log(a, b, c, d, bo);
 bo = b++ > 0 && 1 < ++a / ++c * d++;
-console.log(a, b, c, d);
+console.log(a, b, c, d, bo);
 
 
