@@ -24,7 +24,7 @@ for (let i = 1; i <= 45; i++) {
 }
 // 셔플 함수 개발
 function shuffleArr1(list, n) {
-    for (let i = 0; i < n; i++){
+    for (let i = 0; i < n; i++) {
         //어레이의 길이 사이의 2개의 랜덤값을 구함
         let num1 = Math.floor(Math.random() * list.length);
         let num2 = Math.floor(Math.random() * list.length);
@@ -40,7 +40,7 @@ function shuffleArr1(list, n) {
 let n = 45;
 
 // 위 함수를 45번 반복해서 섞음
-for(let i = 0; i < n; i++){
+for (let i = 0; i < n; i++) {
     numbers1 = shuffleArr1(numbers1, 2);
 }
 // 6개만 슬라이스 해서 뽑아냄
@@ -55,7 +55,7 @@ function shuffleArr2(array) {
         // 현재 인덱스보다 작거나 같은 범위에서 랜덤 인덱스 선택
         let j = Math.floor(Math.random() * (i + 1));
         // 현재 인덱스 값과 랜덤하게 선택한 인덱스값 교환
-        [array[i], array[j]] = [array[j], array[i]]; 
+        [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
 }
@@ -68,5 +68,26 @@ for (let i = 1; i <= 45; i++) {
 //셔플 함수 이용해서 숫자 섞기
 let shuffledNumbers = shuffleArr2(numbers2);
 // 셔플된 배열에서 6개 숫자만 추출
-console.log(shuffledNumbers.slice(0,6));
+console.log(shuffledNumbers.slice(0, 6));
 
+
+// 중복처리 방법 : 중복값 있는지 확인
+// 중복값 확인 함수 제작
+function checking(arr, n) {
+    // n번 반복
+    for (i = 0; i < n; i++) {
+        // 임의의 수 1개 생성
+        let i = Math.floor(Math.random() * 45);
+        // 중복값이 있지 않으면 푸쉬
+        if (!arr.includes(i)) {
+            arr.push(i)
+        }
+    }
+    // 배열 리턴
+    return arr;
+}
+// 배열 초기화
+numbers3 = []
+let result = checking(numbers3, 45);
+// 6개 숫자 슬라이스 해서 출력
+console.log(numbers3.slice(0, 6));
