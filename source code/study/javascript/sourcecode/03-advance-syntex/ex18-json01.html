@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form to JSON</title>
+  </head>
+  <body>
+    <h1>Form Data를 JSON으로 변환</h1>
+    <form id="userForm">
+      <div>
+        <label for="username">이름:</label>
+        <input type="text" id="username" name="username" />
+      </div>
+      <div>
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" />
+      </div>
+      <div>
+        <label for="gender">성별:</label>
+        <input type="radio" id="gender" name="gender" value="man" />남
+        <input type="radio" id="gender" name="gender" />여
+      </div>
+      <div>
+        <label for="intro">소개:</label>
+        <textarea id="intro" name="intro"></textarea>
+      </div>
+      <div>
+        <label for="favo">관심사:</label>
+        <input type="checkbox" id="favo" name="favo" value="Python" />Python
+        <input type="checkbox" id="favo" name="favo" value="C" />C
+        <input
+          type="checkbox"
+          id="favo"
+          name="favo"
+          value="Javascript"
+        />Javascript
+        <input type="checkbox" id="favo" name="favo" value="Java" />Java
+      </div>
+      <button type="button" onclick="submitForm()">제출</button>
+    </form>
+    <pre id="output"></pre>
+
+    <script src="./ex18-json01.js"></script>
+  </body>
+</html>

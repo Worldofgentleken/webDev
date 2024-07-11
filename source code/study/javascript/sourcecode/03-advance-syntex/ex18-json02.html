@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON to Form</title>
+  </head>
+  <body>
+    <h1>폼에 JSON 데이터 표현하기</h1>
+    <form id="userForm">
+      <div>
+        <label for="username">이름:</label>
+        <input type="text" id="username" name="username" />
+      </div>
+      <div>
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" />
+      </div>
+      <div>
+        <label for="gender">성별:</label>
+        <input type="radio" id="gender_male" name="gender" value="man" />남
+        <input type="radio" id="gender_female" name="gender" value="woman" />여
+      </div>
+      <div>
+        <label for="intro">소개:</label>
+        <textarea id="intro" name="intro"></textarea>
+      </div>
+      <div>
+        <label for="favo">관심사:</label>
+        <input type="checkbox" name="favo" value="Python" />Python
+        <input type="checkbox" name="favo" value="C" />C
+        <input type="checkbox" name="favo" value="Javascript" />Javascript
+        <input type="checkbox" name="favo" value="Java" />Java
+      </div>
+      <button type="button" onclick="submitForm()">제출</button>
+    </form>
+    <button type="button" onclick="populateForm()">폼에 데이터 채우기</button>
+
+    <hr />
+
+    <h1>리스트에 JSON 데이터 표현하기</h1>
+    <ul id="userList"></ul>
+    <button type="button" onclick="populateList()">
+      리스트에 데이터 채우기
+    </button>
+
+    <hr />
+    
+    <h1>테이블에 JSON 데이터 표현하기</h1>
+    <table id="userTable" border="1">
+      <tr>
+        <th>이름</th>
+        <th>이메일</th>
+        <th>성별</th>
+        <th>소개</th>
+        <th>관심사</th>
+      </tr>
+    </table>
+    <button type="button" onclick="populateTable()">
+      테이블에 데이터 채우기
+    </button>
+
+    <script src="./ex18-json02.js"></script>
+  </body>
+</html>

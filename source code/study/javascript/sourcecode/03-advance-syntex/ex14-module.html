@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modules</title>
+</head>
+
+<body>
+  <script type="module">
+    
+    import { add, subtract } from './ex14-math.js';
+    
+    console.log(add(2, 3));        // 5
+    console.log(subtract(5, 2));   // 3
+    
+    import Person from './ex14-person.js';
+    
+    const john = new Person('John');
+    john.sayHello(); // Hello, my name is John.
+    
+    import * as constants from './ex14-constants.js';
+
+    console.log(constants.PI); // 3.14
+    console.log(constants.E);  // 2.71
+
+  </script>
+</body>
+
+</html>
