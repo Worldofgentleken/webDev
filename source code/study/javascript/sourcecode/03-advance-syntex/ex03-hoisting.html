@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest Example</title>
+</head>
+
+<body>
+    <input type="text" id="titleInput" placeholder="Title will appear here">
+    <script>
+        console.log("이전 작업");
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                setTimeout(() => {
+                    console.log("응답받음")
+                    const data = JSON.parse(xhr.responseText);
+                    document.getElementById('titleInput').value = data.title;
+                }, 2000);
+            }
+        };
+        console.log("비동기 요청");
+        xhr.send();
+        console.log("다음 작업");
+    </script>
+</body>
+
+</html>

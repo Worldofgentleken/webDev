@@ -9,16 +9,22 @@
 <body>
     <input type="text" id="titleInput" placeholder="Title will appear here">
     <script>
+        console.log("이전 작업");
+        console.log("비동기 요청");
         $.ajax({
             url: 'https://jsonplaceholder.typicode.com/todos/1',
             method: 'GET',
             success: function(data) {
-                $('#titleInput').val(data.title);
+                setTimeout(() => {
+                    $('#titleInput').val(data.title);
+                    console.log("응답 받음");
+                }, 2000);
             },
             error: function(error) {
-                console.error('Error:', error);
+                console.error('에러:', error);
             }
         });
+        console.log("다음 작업");
     </script>
 </body>
 </html>
