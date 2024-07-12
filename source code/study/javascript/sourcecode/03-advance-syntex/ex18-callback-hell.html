@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callback Hell Example</title>
+</head>
+
+<body>
+  <input type="text" id="titleInput1" placeholder="Title will appear here"><br>
+  <input type="text" id="titleInput2" placeholder="Title will appear here"><br>
+  <input type="text" id="titleInput3" placeholder="Title will appear here"><br>
+  <input type="text" id="titleInput4" placeholder="Title will appear here"><br>
+  <script type="text/javascript">
+    function fetchData(url, callback) {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            callback(null, JSON.parse(xhr.responseText));
+          } else {
+            callback(new Error('요청 실패'));
+          }
+        }
+      };
+      xhr.send();
+    }
+
+    console.log("이전 작업");
+
+    fetchData('https://jsonplaceholder.typicode.com/todos/1', function (err, data1) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      document.getElementById('titleInput1').value = data1.title;
+      console.log("첫 번째 응답 받음");
+
+      fetchData('https://jsonplaceholder.typicode.com/todos/2', function (err, data2) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        document.getElementById('titleInput2').value = data2.title;
+        console.log("두 번째 응답 받음");
+
+        fetchData('https://jsonplaceholder.typicode.com/todos/3', function (err, data3) {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          document.getElementById('titleInput3').value = data3.title;
+          console.log("세 번째 응답 받음");
+
+          fetchData('https://jsonplaceholder.typicode.com/todos/4', function (err, data4) {
+            if (err) {
+              console.error(err);
+              return;
+            }
+            document.getElementById('titleInput4').value = data4.title;
+            console.log("네 번째 응답 받음");
+          });
+        });
+      });
+    });
+
+    console.log("다음 작업");
+  </script>
+</body>
+
+</html>

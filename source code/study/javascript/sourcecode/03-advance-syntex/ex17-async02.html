@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async/Await Example</title>
+</head>
+
+<body>
+  <input type="text" id="titleInput" placeholder="Title will appear here">
+  <script>
+    /* 
+    사용자 정의 비동기 함수
+      Callback을 이용한 비동기 함수(전통적인)
+    */
+    function delayCallback(ms, callback) {
+      setTimeout(() => {
+        callback();
+      }, ms);
+    }
+
+    function a() {
+      console.log('비동기 함수 호출');
+      delayCallback(1000, () => {
+        console.log('비동기 함수 처리 완료');
+      });
+    }
+
+    function b() {
+      console.log('동기 함수 호출 및 완료');
+    }
+
+    a();
+    b();
+    console.log("1");
+    console.log("2");
+    console.log("3");
+  </script>
+</body>
+
+</html>
