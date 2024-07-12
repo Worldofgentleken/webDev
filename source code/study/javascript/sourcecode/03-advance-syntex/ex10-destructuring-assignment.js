@@ -79,3 +79,33 @@ const product = {
 };
 
 info(product); // 출력: 제품: Computer, 가격 $54.
+
+// 클로저와 구조 분해 할당 활용
+function outer(){
+    let shared_variable = 0;
+
+    function current(){
+      return shared_variable;
+    }
+
+    function increment(){
+      shared_variable++;
+      return shared_variable;
+    }
+    
+    function decrement(){
+      shared_variable--;
+      return shared_variable;
+    }
+    return [increment, decrement, current];
+}
+
+const [increment_closure, decrement_closure, current_closure] = outer();
+console.log(current_closure());
+console.log(increment_closure());
+console.log(increment_closure());
+console.log(increment_closure());
+console.log(decrement_closure());
+console.log(decrement_closure());
+console.log(decrement_closure());
+console.log(current_closure());

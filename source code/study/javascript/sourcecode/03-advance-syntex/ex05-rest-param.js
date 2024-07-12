@@ -3,8 +3,8 @@
 // 역할: 함수에 전달된 나머지 인수들을 배열로 모아줌.
 // 표기법: ... (점 세 개)와 함께 사용됨.
 // 위치: 항상 함수 매개변수 목록의 마지막에 위치해야 함.
-
 function sum(...numbers) {
+  console.log(numbers);
   return numbers.reduce((total, num) => total + num, 0);
 }
 

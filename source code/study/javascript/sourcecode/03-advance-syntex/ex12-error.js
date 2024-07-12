@@ -24,14 +24,15 @@ finally 블록은 예외 발생 여부와 상관없이 항상 실행
 
 try {
   console.log('동작 중');
-  nonExistentFunction(); // 존재하지 않는 함수 호출
+  //nonExistentFunction(); // ReferenceError: nonExistentFunction is not defined
   console.log('예외 발생으로 실행되지 않음');
 } catch (error) {
   console.error(error); // ReferenceError: nonExistentFunction is not defined
 } finally {
   console.log("무조건 실행");
 }
-var x = 5;
+
+var x = "";
 try {
   if (x == "")
     throw "empty"; //예외 발생 시키기
@@ -42,3 +43,4 @@ try {
 } finally {
   console.log("try/catch문 제일 마지막에 반드시 실행");
 }
+

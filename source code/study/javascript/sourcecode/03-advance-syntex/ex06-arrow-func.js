@@ -48,7 +48,6 @@ console.log(multiply(4, 5)); // 출력: 20
 // this 바인딩 예시
 function person1() {
   this.age = 0;
-
   // 일반 함수
   setInterval(function() {
       this.age++;
@@ -56,6 +55,8 @@ function person1() {
   }, 1000);
 }
 new person1(); // 출력: NaN (this.age가 undefined인 상태에서 1씩 증가 시도)
+// person1은 생성자 함수로 사용되어 객체가 생성됨
+// this에 해당 객체의 참조를 바인딩함
 
 // 콜백함수, setTimeout, setInterval 내에서 일반 함수를 사용하면 this는 전역 객체를 가리킴
 // 브라우저 실행 환경인 경우 window객체를 가리킴
@@ -71,6 +72,8 @@ function person2() {
   }, 1000);
 }
 new person2(); // 출력: 1, 2, 3, ...
+// person1은 생성자 함수로 사용되어 객체가 생성됨
+// this에 해당 객체의 참조를 바인딩함
 
 // 화살표 함수
 function personArrow() {

@@ -1,4 +1,3 @@
-
 class Animal {
   constructor(name) {
     this.name = name;
@@ -22,10 +21,15 @@ class Cat extends Animal {
 }
 
 const dog = new Dog('뽀삐');
-dog.speak(); // Rex barks.
+dog.speak(); // 멍멍
 
 const cat = new Cat('까까');
-cat.speak(); // Rex barks.
+cat.speak(); // 냥냥
+
+an = [dog, cat];
+for(let i = 0; i < 2; i++){
+  an[i].speak();  
+}
 
 
 // 자동차 클래스 정의

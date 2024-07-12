@@ -7,7 +7,7 @@ function globalFunction() {
 
 console.log('전역에서', globalVar); // 접근 가능
 globalFunction();
-console.log();
+console.log('\n');
 
 // Function Scope
 function myFunction() {
@@ -28,23 +28,23 @@ if (true) {
 
 // Lexical Scope: 함수가 선언된 위치에 따라 결정되는 스코프
 // 내부 함수는 외부 함수의 변수에 접근 가능
-function outerFunction() {
+function outerFunc() {
   var outerVar = "outter 변수";
-  function innerFunction() {
+  function innerFunc() {
     console.log('inner', outerVar); // 접근 가능
-    }
+  }
   console.log('outer', outerVar);
-  innerFunction();
+  innerFunc();
 }
 
-outerFunction();
-// innerFunction(); //호출 불가
+outerFunc();
+// innerFunc(); //호출 불가
 
 // Closuer: 함수가 선언될 때의 렉시컬 환경 조합
 // 함수가 선언된 스코프 외부에서 해당 스코프의 변수에 접근 가능
 // 예시1
 function outerFunction() {
-  var outerVar = "I'm an outer variable";
+  var outerVar = "outer 변수";
 
   function innerFunction() {
     console.log(outerVar); // 접근 가능
@@ -54,7 +54,7 @@ function outerFunction() {
 }
 
 const closure = outerFunction();
-closure(); // "I'm an outer variable" 출력
+closure(); // outer 변수 출력
 
 // 예시2
 function closureFunction(init) {
