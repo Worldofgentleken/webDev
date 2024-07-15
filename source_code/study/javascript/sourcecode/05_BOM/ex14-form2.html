@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+      function process(f) {
+        window.alert("안녕하세요 " + f.name.value + "씨！");
+      }
+    </script>
+  </head>
+  <body>
+    <form name="fm">
+      이름：
+      <input type="text" name="name" size="10" />
+      <input type="button" value="제출" onclick="process(this.form)" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+        let subwin;
+
+        function win_open() {
+            subwin = window.open('./ex01-handler.html', 'Google',
+                'width=600, height=300, scrollbars=yes, location=yes');
+        }
+
+        function win_close() {
+            if (subwin && !subwin.closed) {
+                subwin.close();
+            } else {
+                alert('서브 윈도우가 열려 있지 않습니다.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="서브 윈도우를 열기" onclick="win_open()" />
+    <input type="button" value="서브 윈도우를 닫기" onclick="win_close()" />
+</body>
+</html>
+

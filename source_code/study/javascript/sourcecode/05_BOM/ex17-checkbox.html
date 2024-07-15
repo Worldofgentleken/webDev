@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+      function show() {
+        let result = [];
+        let f = document.fm.food;
+        for (let i = 0; i < f.length; i++) {
+          if (f[i].checked) {
+            result.push(f[i].value);
+          }
+        }
+        window.alert(result.toString());
+        return false;
+      }
+    </script>
+  </head>
+
+  <body>
+    <form name="fm" method="POST" action="" onsubmit="return show()">
+      좋아하는 음식은?:
+      <label><input type="checkbox" name="food" value="라면" />라면</label>
+      <label><input type="checkbox" name="food" value="만두" />만두</label>
+      <label><input type="checkbox" name="food" value="불고기" />불고기</label>
+      <input type="submit" value="제출" />
+    </form>
+  </body>
+</html>

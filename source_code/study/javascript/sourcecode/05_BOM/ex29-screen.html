@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+      function adjust() {
+        let subwin = window.open("", "Child", "width=200, height=200");
+        subwin.moveTo(0, 0);
+        subwin.resizeTo(screen.width, screen.height);
+      }
+    </script>
+  </head>
+
+  <body>
+<pre>
+  <input type="button" value="조정" onclick="adjust()" />
+</pre>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+      function getList(elem) {
+        let result = "";
+        for (let i = 0; i < elem.options.length; i++) {
+          if (elem.options[i].selected) {
+            result += elem.options[i].value + ",";
+          }
+        }
+        return result;
+      }
+
+      function show() {
+        window.alert(getList(document.fm.food));
+        return false;
+      }
+    </script>
+  </head>
+
+  <body>
+    <form name="fm" onsubmit="return show()">
+      가장 좋아하는 음식은？：
+      <select name="food" multiple="multiple" size="4">
+        <option value="라면">라면</option>
+        <option value="만두">만두</option>
+        <option value="불고기">불고기</option>
+        <option value="메밀국수">메밀국수</option>
+        <option value="피자">피자</option>
+        <option value="우동">우동</option>
+      </select>
+      <input type="submit" value="제출" />
+    </form>
+  </body>
+</html>

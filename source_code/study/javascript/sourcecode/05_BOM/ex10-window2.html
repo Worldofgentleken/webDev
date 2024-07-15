@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Parent Window</title>
+    <script>
+        var subwin;
+
+        function subwinOpen() {
+            const form = document.getElementById('userForm');
+            const formData = new FormData(form);
+            const formObject = {};
+            
+            formData.forEach(function(value, key) {
+                if(formObject[key]) {
+                    if(Array.isArray(formObject[key])) {
+                        formObject[key].push(value);
+                    } else {
+                        formObject[key] = [formObject[key], value];
+                    }
+                } else {
+                    formObject[key] = value;
+                }
+            });
+
+            subwin = window.open("", "FormDataWindow", "width=600, height=400");
+
+            var tableContent = "<table border='1'><tr><th>항목</th><th>값</th></tr>";
+            for (var key in formObject) {
+                tableContent += "<tr><td>" + key + "</td><td>" + (Array.isArray(formObject[key]) ? formObject[key].join(', ') : formObject[key]) + "</td></tr>";
+            }
+            tableContent += "</table>";
+            tableContent += '<button onclick="window.close()">닫기</button>';
+
+            subwin.document.write("<html><head><title>Form Data</title></head><body>");
+            subwin.document.write(tableContent);
+            subwin.document.write("</body></html>");
+        }
+
+        function populateForm() {
+            document.getElementById('username').value = '홍길동';
+            document.getElementById('email').value = 'hong@example.com';
+            document.getElementById('gender_male').checked = true;
+            document.getElementById('intro').value = '안녕하세요, 저는 홍길동입니다.';
+            document.querySelector('input[name="favo"][value="Python"]').checked = true;
+            document.querySelector('input[name="favo"][value="Java"]').checked = true;
+        }
+    </script>
+</head>
+
+<body>
+    <form id="userForm">
+        <div>
+            <label for="username">이름:</label>
+            <input type="text" id="username" name="username" />
+        </div>
+        <div>
+            <label for="email">이메일:</label>
+            <input type="email" id="email" name="email" />
+        </div>
+        <div>
+            <label for="gender">성별:</label>
+            <input type="radio" id="gender_male" name="gender" value="man" />남
+            <input type="radio" id="gender_female" name="gender" value="woman" />여
+        </div>
+        <div>
+            <label for="intro">소개:</label>
+            <textarea id="intro" name="intro"></textarea>
+        </div>
+        <div>
+            <label for="favo">관심사:</label>
+            <input type="checkbox" name="favo" value="Python" />Python
+            <input type="checkbox" name="favo" value="C" />C
+            <input type="checkbox" name="favo" value="Javascript" />Javascript
+            <input type="checkbox" name="favo" value="Java" />Java
+        </div>
+        <button type="button" onclick="subwinOpen()">확인</button>
+    </form>
+    <button type="button" onclick="populateForm()">폼에 데이터 채우기</button>
+</body>
+
+</html>

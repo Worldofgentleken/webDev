@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Hello JS</title>
+  <script>
+    function setCookie(name, value, expires, domain, path, secure) {
+      let c = '';
+      c += name + '=' + encodeURIComponent(value);
+      if (expires) {
+        let exp = new Date();
+        exp.setDate(exp.getDate() + expires);
+        c += '; expires=' + exp.toGMTString();
+      }
+      if (domain) { c += '; domain=' + domain; }
+      if (path) { c += '; path=' + path; }
+      if (secure) { c += '; secure'; }
+      document.cookie = c;
+  }
+
+  function getCookie(name) {
+    let cs = document.cookie.split(';');
+      for (let i = 0; i < cs.length; i++) {
+        let kv = cs[i].split('=');
+        if (kv[0] == name) { return decodeURIComponent(kv[1]); }
+      }
+      return null;
+  }
+  </script>
+</head>
+
+<body>
+  <script>
+    let cnt = getCookie('js_cnt');
+    cnt = cnt ? ++cnt : 1;
+    setCookie('js_cnt', cnt, 90);
+    document.write('당신은 이 사이트에 ' + cnt + '회, 액세스하였습니다.');
+  </script>
+</body>
+
+</html>

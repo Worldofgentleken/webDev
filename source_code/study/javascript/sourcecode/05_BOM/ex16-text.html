@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+      function chk() {
+        let q = document.fm.old;
+        if (q.value != null && q.value != "") {
+          if (isNaN(q.value)) {
+            window.alert("연령은 수치로 입력해야 합니다");
+            q.value = q.defaultValue;
+            q.focus();
+            q.select();
+            return false;
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form name="fm" method="POST" action="" onsubmit="return chk()">
+      <label>나이<input type="text" name="old" value="20" size="3" />세</label>
+      <input type="submit" value="제출" />
+    </form>
+  </body>
+</html>

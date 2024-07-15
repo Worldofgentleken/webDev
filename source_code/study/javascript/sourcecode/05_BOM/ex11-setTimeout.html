@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+      let timer;
+
+      window.onload = function () {
+        timer = window.setTimeout(function () {
+          var date = new Date();
+          document.getElementById("result").innerHTML =
+            date.toLocaleTimeString();
+        }, 3000);
+      };
+    </script>
+  </head>
+
+  <body>
+    <input type="button" value="타이머 정지" onclick="clearTimeout(timer)" />
+    <div id="result"></div>
+  </body>
+</html>

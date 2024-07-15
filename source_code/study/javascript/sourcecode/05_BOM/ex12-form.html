@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+      function process() {
+        const name = document.fm.name.value;
+        //const name = document.forms[0].elements[0].value
+        //const name = document.forms['fm'].elements['name'].value
+        //const name = document['fm']['name'].value
+        window.alert("안녕하세요, " + name + "씨！");
+        return false;
+      }
+    </script>
+  </head>
+
+  <body>
+    <form name="fm" onsubmit="return process()">
+      이름：
+      <input type="text" name="name" size="10" />
+      <input type="submit" value="제출" />
+    </form>
+  </body>
+</html>

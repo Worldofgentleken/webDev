@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+        function winOpen() {
+            const subwin = window.open('', 'Child', 'width=200, height=200');
+            subwin.document.open('text/html');
+            subwin.document.writeln('입력값：');
+            subwin.document.writeln(subwin.opener.document.fm.data.value);
+            subwin.document.writeln('<br /><input type="button" value="닫기" ');
+            subwin.document.writeln('onclick="self.close();" />');
+            subwin.document.close();
+        }
+    </script>
+</head>
+
+<body>
+    <form name="fm">
+        <input type="text" name="data" value="출력되는 문자열" />
+        <input type="button" value="열기" onclick="winOpen()" />
+    </form>
+</body>
+
+</html>

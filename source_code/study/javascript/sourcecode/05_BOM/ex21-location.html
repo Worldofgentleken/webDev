@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+      function jump(elem) {
+        let isbn = elem.value;
+        //location.href = 'http://www.kyobobook.co.kr/product/detailViewKor.laf?barcode=' + isbn;
+        location.replace("http://www.kyobobook.co.kr/product/detailViewKor.laf?barcode=" + isbn);
+      }
+    </script>
+  </head>
+
+  <body>
+    <form name="fm">
+      <select name="book" onchange="jump(this)">
+        <option value="">---도서명 선택---</option>
+        <option value="9791163031291(1163031291)">Do it! HTML5+CSS3 웹 표준의 정석</option>
+        <option value="9788956748245(8956748241)">초보자를 위한 Javascript 200제</option>
+        <option value="9788960773431(8960773433)">토비의 스프링 3.1 세트</option>
+        <option value="9788979146639(8979146639)">HEAD FIRST SERVLETS & JSP(개정판)</option>
+      </select>
+    </form>
+  </body>
+</html>

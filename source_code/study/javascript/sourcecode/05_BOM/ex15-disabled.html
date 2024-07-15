@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+      function process(f) {
+        let fmt = document.fm.fmt;
+        for (let i = 0; i < fmt.length; i++) {
+          fmt[i].disabled = !document.fm.need.checked;
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <form name="fm">
+      <label>
+        뉴스 이메일 구독 여부：
+        <input type="checkbox" name="need" value="1" checked="checked" onclick="process()" />
+      </label>
+      <br />
+      <label><input type="radio" name="fmt" value="plain" />텍스트형식</label>
+      <label><input type="radio" name="fmt" value="html" />HTML형식</label>
+    </form>
+  </body>
+</html>

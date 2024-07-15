@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hello JS</title>
+    <script>
+        function openWin() {
+            myWindow = window.open("", "myWindow", "width=200, height=100");
+            myWindow.document.write("<p>This is 'myWindow'</p>");
+            myWindow.document.write('<input type="button" value="scrollTo" onclick="window.scrollTo(0, 200)"/><br>');
+            myWindow.document.write('<input type="button" value="moveBy" onclick="moveBy(100, 100)"/><br>');
+            myWindow.document.write('<input type="button" value="resizeBy" onclick="window.resizeBy(50, 50)"/><br>');
+            for(let i = 0; i < 1000; i++){
+                myWindow.document.write( i + 1 + '.Hello <br>');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="openWin()">Open "myWindow"</button>
+</body>
+
+</html>
