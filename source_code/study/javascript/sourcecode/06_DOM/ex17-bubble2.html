@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <style>
+      #outer {
+        background-color: aqua;
+        width: 300px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #inner {
+        background-color: gold;
+        width: 150px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("outer").addEventListener("click", (e) => {
+          window.alert("상위 요소의 이벤트 리스너입니다.");
+        });
+
+        document.getElementById("inner").addEventListener("click", (e) => {
+          window.alert("하위 요소의 이벤트 리스너입니다.");
+          // 이벤트 전파 중지
+          // e.stopPropagation();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="outer">
+      <div id="inner">클릭해 봅시다.</div>
+    </div>
+  </body>
+</html>
+

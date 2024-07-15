@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script>
+        function changeStyle(elem, clazz) {
+            elem.className = clazz;
+        }
+    </script>
+</head>
+
+<body>
+    <div onmouseover="changeStyle(this, 'highlight')" 
+    onmouseout="changeStyle(this, 'normal')">
+        마우스를 올려 놓으면 색이 변한다.</div>
+</body>
+</html>
+

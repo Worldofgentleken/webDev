@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script type="text/javascript" src="listener2.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const titleElement = document.getElementById('title');
+            addListener(titleElement, 'mousedown', (e) => {
+                const result = [];
+                result.push('발생원：' + e.target.id);
+                result.push('이벤트：' + e.type);
+                result.push('버튼：' + getButtonType(e));
+                result.push('X좌표:' + e.clientX);
+                result.push('Y좌표:' + e.clientY);
+                window.alert(result.join('\n'));
+            });
+        });
+
+        function getButtonType(e) {
+            switch (e.button) {
+                case 0: return 'left';
+                case 1: return 'center';
+                case 2: return 'right';
+                default: return 'unknown';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 id="title">[마우스로 클릭해보세요]</h1>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+      // 고전 방식
+      // window.onload = function () {
+      //     let logo = document.getElementById('logo');
+      //     let attrs = logo.attributes;
+      //     let result = [];
+      //     for (let i = 0; i < attrs.length; i++) {
+      //         let attr = attrs.item(i);
+      //         if (attr.nodeValue) {
+      //             result.push(attr.nodeName + ':' + attr.nodeValue);
+      //         }
+      //     }
+      //     window.alert(result.join('\r\n'));
+      // }
+
+      window.onload = function () {
+        // Array.from 사용
+        const logo = document.getElementById("logo");
+        const attrs = Array.from(logo.attributes);
+        const result = attrs.map((attr) => `${attr.name}: ${attr.value}`);
+        window.alert(result.join("\r\n"));
+
+        // // for...of 사용
+        // const logo = document.getElementById('logo');
+        // const result = [];
+        // for (const attr of logo.attributes) {
+        //     if (attr.value) {
+        //         result.push(`${attr.name}: ${attr.value}`);
+        //     }
+        // }
+        // window.alert(result.join('\r\n'));
+      };
+    </script>
+  </head>
+
+  <body>
+    <img
+      id="logo"
+      src="https://s.pstatic.net/static/www/img/uit/2019/sp_search.png"
+      height="67"
+      width="215"
+      border="0"
+      alt="Naver"
+    />
+  </body>
+</html>

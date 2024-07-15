@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script type="text/javascript" src="listener.js"></script>
+    <script>
+      function cancelEvent(e) {
+        if (e.preventDefault) {
+          alert("c");
+          e.preventDefault();
+        } else if (window.event) {
+          alert("I");
+
+          window.event.returnValue = false;
+        }
+      }
+
+      addListener(window, "load", init);
+
+      function init() {
+        addListener(document.getElementById("fm"), "submit", function (e) {
+          if (!window.confirm("계속 하시겠습니까？")) {
+            cancelEvent(e);
+          }
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+    <form id="fm">
+      <input type="text" id="name" size="10" />
+      <input type="submit" value="제출" />
+    </form>
+  </body>
+</html>

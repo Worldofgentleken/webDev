@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+      window.onload = function () {
+        let result = [];
+        let list = document.getElementsByName("my");
+        for (let i = 0; i < list.length; i++) {
+          result.push(list.item(i).href);
+        }
+        window.alert(result.join("\n"));
+      };
+    </script>
+  </head>
+
+  <body>
+    <a href="http://www.google.co.kr" name="my">외국친구</a><br />
+    <a href="http://www.naver.com" name="my">한국친구</a>
+  </body>
+</html>

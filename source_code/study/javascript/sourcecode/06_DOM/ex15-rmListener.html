@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+        function addListener(elem, ev, listener) {
+            if (elem.addEventListener) {
+                elem.addEventListener(ev, listener, false);
+            } else if (elem.attachEvent) {
+                elem.attachEvent('on' + ev, listener);
+            } else {
+                throw new Error('이벤트 리스너에 미대응입니다.');
+            }
+        }
+
+        function removeListener(elem, ev, listener) {
+            if (elem.removeEventListener) {
+                elem.removeEventListener(ev, listener, false);
+            } else if (elem.detachEvent) {
+                elem.detachEvent('on' + ev, listener);
+            } else {
+                throw new Error('이벤트 리스너에 미대응입니다.');
+            }
+        }
+
+        function btn_click() {
+            window.alert('버튼이 클릭되었습니다.');
+        }
+
+        addListener(window, 'load', init);
+
+        function init() {
+            addListener(document.getElementById('btn'), 'click', btn_click);
+            addListener(document.getElementById('btnRemove'), 'click', btnRemove_click);
+        }
+
+        function btnRemove_click() {
+            removeListener(document.getElementById('btn'), 'click', btn_click);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" id='btn' value="다이얼로그 표시" />
+    <input type="button" id='btnRemove' value="이벤트 리스너 삭제" />
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+      window.onload = function () {
+        let div = document.querySelector('div');
+        div.childNodes.forEach(node => {
+          console.log(node);
+        });
+      };
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <p>Hello, World!</p>
+    </div>
+  </body>
+</html>

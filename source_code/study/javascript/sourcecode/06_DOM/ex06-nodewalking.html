@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+      // 고전 방식
+      // window.onload = function () {
+      //   let result = [];
+      //   let s = document.getElementById("food");
+      //   let opts = s.childNodes;
+      //   for (let i = 0; i < opts.length; i++) {
+      //     let opt = opts.item(i);
+      //     if (opt.nodeType == 1) {
+      //       result.push(opts.item(i).value);
+      //     }
+      //   }
+      //   window.alert(result.join(","));
+      // };
+
+      window.onload = function () {
+            const s = document.getElementById("food");
+            const result = Array.from(s.children).map(opt => opt.value);
+            window.alert(result.join(","));
+        };
+    </script>
+  </head>
+
+  <body>
+    <form name="fm">
+      가장 먹고 싶은 음식은？：
+      <select id="food" name="food">
+        <option value="라면">라면</option>
+        <option value="만두">만두</option>
+        <option value="불고기">불고기</option>
+      </select>
+      <input type="submit" value="제출" />
+    </form>
+  </body>
+</html>

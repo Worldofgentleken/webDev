@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('btn');
+            const btnRemove = document.getElementById('btnRemove');
+
+            function btn_click() {
+                window.alert('버튼이 클릭되었습니다.');
+            }
+
+            function btnRemove_click() {
+                btn.removeEventListener('click', btn_click);
+            }
+
+            // 이벤트 리스너 추가
+            btn.addEventListener('click', btn_click);
+            btnRemove.addEventListener('click', btnRemove_click);
+        });
+    </script>
+</head>
+
+<body>
+    <input type="button" id="btn" value="다이얼로그 표시" />
+    <input type="button" id="btnRemove" value="이벤트 리스너 삭제" />
+</body>
+
+</html>

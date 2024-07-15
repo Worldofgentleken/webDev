@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+      // 예전 방식
+      function show(e, isbn) {
+        let img = document.createElement("img");
+        img.src = isbn + ".jpg";
+        img.alt = e.innerHTML;
+        img.height = 150;
+        img.width = 108;
+        let pic = document.getElementById("pic");
+        if (pic.getElementsByTagName("img").length > 0) {
+          pic.replaceChild(img, pic.lastChild);
+        } else {
+          document.getElementById("del").disabled = false;
+          pic.appendChild(img);
+        }
+      }
+
+      function del() {
+        let pic = document.getElementById("pic");
+        pic.removeChild(pic.lastChild);
+        document.getElementById("del").disabled = true;
+      }
+    </script>
+  </head>
+
+  <body>
+    <ul>
+      <li>
+        <a href="JavaScript:void(0)" onclick="show(this, '978-4-7741-4223-4')">
+          Apache 포켓 레퍼런스</a>
+      </li>
+      <li>
+        <a href="JavaScript:void(0)" onclick="show(this, '978-4-7741-4076-6')">
+          3단계로 확실히 배우는 MySQL입문</a>
+      </li>
+      <li>
+        <a href="JavaScript:void(0)" onclick="show(this, '978-4-8443-2879-7')">
+          개정3판 기초PHP</a>
+      </li>
+      <li>
+        <a href="JavaScript:void(0)" onclick="show(this, '978-4-7981-2205-2')">
+          Visual Studio 2010 스타트 업 가이드</a>
+      </li>
+      <li>
+        <a href="JavaScript:void(0)" onclick="show(this, '978-4-8443-2865-0')">
+          Perl 프레임워크 Catalyst 완전 입문</a>
+      </li>
+    </ul>
+    <input type="button" id="del" value="삭제" disabled="disabled" onclick="del()"/>
+    <div id="pic"></div>
+  </body>
+</html>

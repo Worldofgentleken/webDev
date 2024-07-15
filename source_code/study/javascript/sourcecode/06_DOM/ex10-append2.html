@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+      function add(f) {
+        let anchor = document.createElement("a"); //태그 생성
+        let href = document.createAttribute("href"); //속성 생성
+        href.nodeValue = f.url.value;
+        anchor.setAttributeNode(href);
+        let name = document.createTextNode(f.name.value); //텍스트노드 생성
+        anchor.appendChild(name);
+        let br = document.createElement("br"); //속성 생성
+        let list = document.getElementById("list");
+        list.insertBefore(br, null); //기준이 없으므로 마지막에 추가
+        list.insertBefore(anchor, br); //br요소 앞에 anchor삽입
+      }
+    </script>
+  </head>
+
+  <body>
+    <form>
+      <label>사이트 명: <input type="text" name="name" size="30" /></label><br />
+      <label>URL: <input type="text" name="url" size="50" /></label><br />
+      <input type="button" value="추가" onclick="add(this.form)" />
+    </form>
+    <div id="list"></div>
+  </body>
+</html>

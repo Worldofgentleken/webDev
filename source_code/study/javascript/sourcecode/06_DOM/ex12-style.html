@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+      function changeStyle(elem, color) {
+        elem.style.backgroundColor = color;
+      }
+    </script>
+  </head>
+
+  <body>
+    <div
+      onmouseover="changeStyle(this, 'Pink')"
+      onmouseout="changeStyle(this, 'White')"
+    >
+      마우스를 올려놓으면 색이 변합니다.
+    </div>
+  </body>
+</html>

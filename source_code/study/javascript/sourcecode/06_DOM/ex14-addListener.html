@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('btn');
+            button.addEventListener('click', () => {
+                window.alert('버튼이 클릭되었습니다.');
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" id="btn" value="다이얼로그 표시" />
+</body>
+</html>

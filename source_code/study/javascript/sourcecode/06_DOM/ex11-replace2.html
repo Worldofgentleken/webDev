@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+      function show(e, isbn) {
+        const img = document.createElement("img");
+        img.src = `${isbn}.jpg`;
+        img.alt = e.textContent;
+        img.height = 150;
+        img.width = 108;
+        const pic = document.getElementById("pic");
+        if (pic.querySelector("img")) {
+          pic.replaceChild(img, pic.lastChild);
+        } else {
+          document.getElementById("del").disabled = false;
+          pic.appendChild(img);
+        }
+      }
+
+      function del() {
+        const pic = document.getElementById("pic");
+        if (pic.lastChild) {
+          pic.removeChild(pic.lastChild);
+          document.getElementById("del").disabled = true;
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll("ul li a");
+        links.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            const isbn = event.currentTarget.dataset.isbn;
+            show(event.currentTarget, isbn);
+          });
+        });
+
+        document.getElementById("del").addEventListener("click", del);
+      });
+    </script>
+  </head>
+
+  <body>
+    <ul>
+      <li>
+        <a href="javascript:void(0)" data-isbn="978-4-7741-4223-4">
+          Apache 포켓 레퍼런스</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" data-isbn="978-4-7741-4076-6">
+          3단계로 확실히 배우는 MySQL입문</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" data-isbn="978-4-8443-2879-7">
+          개정3판 기초PHP</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" data-isbn="978-4-7981-2205-2">
+          Visual Studio 2010 스타트 업 가이드</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" data-isbn="978-4-8443-2865-0">
+          Perl 프레임워크 Catalyst 완전 입문</a>
+      </li>
+    </ul>
+    <input type="button" id="del" value="삭제" disabled="disabled" />
+    <div id="pic"></div>
+  </body>
+</html>

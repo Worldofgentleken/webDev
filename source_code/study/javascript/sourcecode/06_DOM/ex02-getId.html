@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+      function btn_click() {
+        let result = document.getElementById("result");
+        result.innerHTML = "안녕하세요," + document.fm.name.value + "님！";
+        //result.innerHTML = '안녕하세요,' + document.getElementById('name').value + '님！';
+      }
+    </script>
+  </head>
+
+  <body>
+    <form name="fm">
+      <label
+        >이름： <input type="text" id="name" name="name" size="15"
+      /></label>
+      <input type="button" value="전송" onclick="btn_click()" />
+      <div id="result"></div>
+    </form>
+  </body>
+</html>

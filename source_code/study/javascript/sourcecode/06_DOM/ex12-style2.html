@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM의 기본 구조</title>
+    <script>
+      function changeStyle(elem, color) {
+        elem.style.backgroundColor = color;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const div = document.querySelector("div");
+        div.addEventListener("mouseover", () => changeStyle(div, "Pink"));
+        div.addEventListener("mouseout", () => changeStyle(div, "White"));
+      });
+    </script>
+  </head>
+
+  <body>
+    <div>마우스를 올려놓으면 색이 변합니다.</div>
+  </body>
+</html>
