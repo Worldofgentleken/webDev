@@ -18,9 +18,17 @@
     <h3> 문제. 버튼에 따른 크기 조절이 되도록 작성</h3>
 
     <div id="div2"> </div>
-    <button>50x50</button>
-    <button>원본(100x100)</button>
-    <button>200x200</button>
+    <button onclick="resizeDiv(50)">50x50</button>
+    <button onclick="resizeDiv(100)">원본(100x100)</button>
+    <button onclick="resizeDiv(200)">200x200</button>
+
+    <script>
+        function resizeDiv(size) {
+            let div = document.getElementById('div2');
+            div.style.width = size + 'px';
+            div.style.height = size + 'px';
+        }
+    </script>
     
 </body>
 
