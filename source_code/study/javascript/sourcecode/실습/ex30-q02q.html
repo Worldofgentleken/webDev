@@ -13,7 +13,31 @@
     <h5>스타일 속성을 지정하려는 경우 인라인으로 직접 지정해야 적용됨</h5>
     <h5>변수는 let or const로 선언</h5>
 
-    <button>테이블 생성</button>
+    <button onclick="createTable()">테이블 생성</button>
+    <script>
+        function createTable(){
+            let rows = parseInt(prompt("테이블 행 입력"));
+            let columns = parseInt(prompt("테이블 열 입력"))
+
+            let tableDiv = document.createElement('div');
+            document.body.appendChild(tableDiv);
+
+            let table = document.createElement('table');
+            table.style.border = '1px solid black';
+            table.style.borderCollapse = 'collapse';
+
+            for (let i=0; i<rows; i++){
+                let row = table.insertRow();
+                for (let j=0 ; j <columns; j++){
+                    let cell = row.insertCell();
+                    cell.style.border = '1px solid black';
+                    cell.style.padding = '10px';
+                    cell.textContent = `Row ${i+1}, Col ${j+1}`;
+                }
+            }
+            tableDiv.appendChild(table);
+        }
+    </script>
 
 </body>
 
