@@ -3,6 +3,26 @@
 
 <head>
     <title>Quiz</title>
+    <script>
+        function findArray(){
+            const arr1 = ["사과", "바나나", "당근"];
+            const arr2 = ["김밥", "치즈", "떡볶이", "햄버거"];
+            const arr3 = ["환타", "사이다", "콜라"];
+            const arr4 = ["고양이", "강아지"];
+
+            const combinedArray = arr1.concat(arr2, arr3, arr4);
+
+            const input = document.getElementById('searchInput').value.trim();
+
+            const index = combinedArray.indexOf(input);
+
+            if(index !== -1){
+                alert(`배열의 위치 : ${index}`);
+            }else{
+                alert("존재하지 않음")
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -19,9 +39,9 @@
         <label>환타,사이다,콜라</label><br>
         <label>고양이,강아지</label><br>
     </fieldset><br>
-    <input type="text" placeholder="찾을 문자열을 입력하세요" size="100">
+    <input type="text" id="searchInput" placeholder="찾을 문자열을 입력하세요" size="100">
     <div> </div>
-    <button> 전송 및 처리 </button>
+    <button onclick="findArray()"> 전송 및 처리 </button>
 </body>
 
 </html>
