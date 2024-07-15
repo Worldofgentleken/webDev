@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "title": "대박 사건!",
+      "author": "홍길동",
+      "id": "2509"
+    },
+    {
+      "id": "84f9",
+      "title": "The Great",
+      "author": "Jeremy"
+    },
+    {
+      "id": "d7c5",
+      "title": "The Great",
+      "author": "Jeremy"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

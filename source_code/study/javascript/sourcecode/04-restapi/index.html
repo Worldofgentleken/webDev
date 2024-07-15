@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Example Page</title>
+</head>
+<body>
+  <h1>자바스크립트 예제 페이지</h1>
+  <p>
+    <h3>json-server 준비</h3>
+    <ol>
+      <li>
+        현재 작업 폴더에서 json-server 설치<br>
+        > npm install -g json-server
+      </li>
+      <li>
+        테스트용 db.json 파일 생성 후 다음 내용 저장<br>
+<pre>
+{
+  "posts": [
+    { "id": "1", "title": "a title", "views": 100 },
+    { "id": "2", "title": "another title", "views": 200 }
+  ],
+  "comments": [
+    { "id": "1", "text": "a comment about post 1", "postId": "1" },
+    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
+</pre>
+      </li>
+      <li>
+        json-server 실행<br>
+        > json-server --watch db.json
+      </li>
+      <li>
+        예제 테스트(브라우저에서 직접 실행하기)
+        <ul>
+          <li>ex01-get.html</li>
+          <li>ex02-post.html</li>
+          <li>ex03-put.html</li>
+          <li>ex04-delete.html</li>
+        </ul>
+      </li>
+    </ol> 
+  </p>
+  <p>
+    JSON파일과 json-server테스트 후 <a href="https://www.postman.com/">postman</a>활용 해보기
+  </p>
+  
+</body>
+</html>
