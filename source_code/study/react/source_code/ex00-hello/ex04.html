@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        class Hello extends React.Component {
+            render() {
+                return <div>Hello {this.props.who}</div>
+            }
+        }
+
+        const element = (
+	        <h1 className="greeting">
+		        Hello World~
+	        </h1>
+        );
+
+        // 상위 컴포넌트
+        const App = (props) => {
+            return (
+                <React.Fragment>
+                    <Hello who={props.who} />
+                    {element}
+                </React.Fragment>
+        );
+    };
+    
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(App, {who: 'KkaRu'}, null));
+    
+    </script>
+</body>
+</html>
