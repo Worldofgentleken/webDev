@@ -3,6 +3,21 @@
 
 <head>
     <title>Quiz</title>
+    <script>
+        function resetPrint(){
+            const arr1 = ["s", "m"];
+            const arr2 = ["e", "v", "o", "l"] 
+            arr1.reverse()
+            arr2.reverse()
+
+            combinedArr = arr1.concat(arr2)
+
+            const result = combinedArr.join("");
+
+            document.getElementById("print").textContent = result;
+        }
+        
+    </script>
 </head>
 
 <body>
@@ -18,7 +33,7 @@
     </fieldset><br>
     <p style="border:1px solid red;" id="print">이 부분에 결과를 출력</p>
     <div> </div>
-    <button> 처리 </button>
+    <button onclick="resetPrint()"> 처리 </button>
 </body>
 
 </html>
