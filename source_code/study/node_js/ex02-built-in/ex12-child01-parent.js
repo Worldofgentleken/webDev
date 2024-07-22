@@ -18,7 +18,7 @@ child_process 모듈
 // exec 예제
 const { exec } = require('child_process');
 
-exec('dire', (err, stdout, stderr) => {
+exec('ls', (err, stdout, stderr) => {
   if (err) {
     console.error(`exec error1: ${err}`); // 명령어 실행 오류
     return;
@@ -62,7 +62,7 @@ ls.on('close', (code) => {
 // fork 예제
 const { fork } = require('child_process');
 
-const child = fork('./ex17-child01_child.js');
+const child = fork('./ex12-child02-child.js');
 
 child.on('message', (message) => {
   console.log('자식 프로세스로부터의 메시지:', message);
