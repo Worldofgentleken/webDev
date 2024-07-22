@@ -38,7 +38,7 @@ const hashValue = sha_hash256.digest('hex');
 console.log('sha256 Hash value:', hashValue);
 
 // sha256 사용
-const sha_hash512 = crypto.createHash('sha256');
+const sha_hash512 = crypto.createHash('sha512');
 sha_hash512.update('hello');
 console.log('sha512 Hash value:', sha_hash512.digest('hex'));
 

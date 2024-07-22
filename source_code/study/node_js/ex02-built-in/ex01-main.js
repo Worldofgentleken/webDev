@@ -6,4 +6,4 @@ console.log(`App Version: ${global.config.version}`);
 global.logMessage('애플리케이션 시작');
 
 // otherModule.js 파일을 실행
-global.require('./ex01-other.js');
+require('./ex01-other.js');
