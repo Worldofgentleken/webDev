@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTTP Method Test</title>
+    <script>
+      function sendRequest(method, id='') {
+        const url = `http://localhost:3000/todos${id}`;
+
+        fetch(url, {
+          method: method,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body:
+            method !== "GET" && method !== "DELETE"
+              ? JSON.stringify({ data: document.getElementById(`${method.toLowerCase()}-data`).value })
+              : null,
+        })
+          .then((response) => response.json())
+          .then((data) => console.log("Success:", data))
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Test HTTP Methods</h1>
+
+    <!-- GET 요청 -->
+    <h2>GET Request</h2>
+    <a href="http://localhost:3000/todos/?n=10&name=hong">일반적인 GET 요청</a>
+
+    <!-- REST 방식 -->
+    <!-- GET 요청 -->
+    <button type="button" onclick="sendRequest('POST', '/1');">REST GET 요청</button>
+
+    <!-- POST 요청 -->
+    <h2>POST Request</h2>
+    <form onsubmit="event.preventDefault(); sendRequest('POST');">
+      보낼 데이터:
+      <input type="text" id="post-data" name="post-data" />
+      <input type="submit" value="REST POST Request" />
+    </form>
+
+    <!-- PUT 요청 -->
+    <h2>PUT Request</h2>
+    <form onsubmit="event.preventDefault(); sendRequest('PUT');">
+      보낼 데이터:
+      <input type="text" id="put-data" name="put-data" />
+      <input type="submit" value="REST PUT Request" />
+    </form>
+
+    <!-- DELETE 요청 -->
+    <h2>DELETE Request</h2>
+    <button type="button" onclick="sendRequest('DELETE', '/1');">REST DELETE 요청</button>
+  </body>
+</html>
