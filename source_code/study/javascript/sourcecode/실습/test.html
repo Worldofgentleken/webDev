@@ -1,0 +1,53 @@
+import React, { useState } from 'react';
+
+const Calculator = () => {
+  const [input, setInput] = useState('');
+  const [result, setResult] = useState([]);
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  const calculateResult = (input) => {
+    try {
+      // 문자열 파싱 및 계산
+      const evaluatedResult = eval(input); // eval은 안전하지 않으므로 다른 방법을 사용 권장
+      setResult([...result, { expression: input, value: evaluatedResult }]);
+    } catch (error) {
+      console.error('Invalid input:', error);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    calculateResult(input);
+    setInput('');
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={input} onChange={handleChange} />
+        <button type="submit">Calculate</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Expression</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          {result.map((item, index) => (
+            <tr key={index}>
+              <td>{item.expression}</td>
+              <td>{item.value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default Calculator;
