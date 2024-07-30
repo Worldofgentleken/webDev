@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학생 정보 업데이트</title>
+</head>
+<body>
+    <h1>학생 정보 업데이트</h1>
+    <form id="updateForm">
+        <label for="student_id">학생 ID:</label>
+        <input type="number" id="student_id" name="student_id" required><br><br>
+        <label for="student_name">이름:</label>
+        <input type="text" id="student_name" name="student_name" required><br><br>
+        <label for="birth">생년월일:</label>
+        <input type="date" id="birth" name="birth" required><br><br>
+        <label for="gender">성별:</label>
+        <select id="gender" name="gender" required>
+            <option value="남">남</option>
+            <option value="여">여</option>
+        </select><br><br>
+        <label for="introduction">자기소개:</label>
+        <textarea id="introduction" name="intro" required></textarea><br><br>
+        <button type="submit">업데이트</button>
+    </form>
+
+    <script>
+        document.getElementById('updateForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const student_id = document.getElementById('student_id').value;
+            const student_name = document.getElementById('student_name').value;
+            const birth = document.getElementById('birth').value;
+            const gender = document.getElementById('gender').value;
+            const introduction = document.getElementById('introduction').value;
+
+            const response = await fetch(`/students/${student_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ student_name, birth, gender, introduction })
+            });
+
+            if (response.ok) {
+                alert('학생 정보가 업데이트되었습니다.');
+            } else {
+                alert('업데이트 중 오류가 발생했습니다.');
+            }
+        });
+    </script>
+</body>
+</html>

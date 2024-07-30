@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자유 게시판</title>
+</head>
+<body>
+  <h1>자유 게시판</h1>
+  <button onclick="subreq()">요청</button>
+  <span id="view"></span>
+  <script>
+    function subreq() {
+      fetch('http://localhost:3000/freeboard/subpath')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('view').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('요청 에러', error)
+        });
+    }
+  </script>
+</body>
+</html>

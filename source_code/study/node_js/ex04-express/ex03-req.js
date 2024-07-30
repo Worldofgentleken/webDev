@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
 const app = express();
 const port = 3000;
 
@@ -35,15 +34,7 @@ const parseJsonBody = (req, res, callback) => {
 // GET 요청 처리 - HTML 파일 응답
 app.get('/', (req, res) => {
   const filePath = path.join(__dirname, 'public', 'ex02-req.html');
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.writeHead(500, { 'Content-Type': 'text/plain' });
-      res.end('Internal Server Error');
-    } else {
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.end(data);
-    }
-  });
+  res.sendFile(filePath);
 });
 
 // GET 요청 처리 - 할 일 목록 조회

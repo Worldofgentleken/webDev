@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Parser Example</title>
+  </head>
+  <body>
+    <h1>Cookie Parser Example</h1>
+    <button id="setCookieBtn">쿠키 설정하기</button>
+    <button id="getCookieBtn">쿠키 가져오기</button>
+    <button id="delCookieBtn">쿠키 삭제하기</button>
+    <p id="message"></p>
+    <script>
+      document
+        .getElementById("setCookieBtn")
+        .addEventListener("click", function () {
+          fetch("/set-cookie")
+            .then((response) => response.text())
+            .then((text) => {
+              document.getElementById("message").textContent = text;
+            });
+        });
+
+      document
+        .getElementById("getCookieBtn")
+        .addEventListener("click", function () {
+          fetch("/get-cookie")
+            .then((response) => response.text())
+            .then((text) => {
+              document.getElementById("message").textContent = text;
+            });
+        });
+      document
+        .getElementById("delCookieBtn")
+        .addEventListener("click", function () {
+          fetch("/delete-cookie")
+            .then((response) => response.text())
+            .then((text) => {
+              document.getElementById("message").textContent = text;
+            });
+        });
+    </script>
+  </body>
+</html>

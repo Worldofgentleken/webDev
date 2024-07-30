@@ -1,58 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTTP Method Test</title>
-    <script>
-      function sendRequest(method, id='') {
-        const url = `http://localhost:3000/todos${id}`;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Express API</title>
+  <script>
+    async function sendRequest(method, url, data) {
+      const options = {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
 
-        fetch(url, {
-          method: method,
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body:
-            method !== "GET" && method !== "DELETE"
-              ? JSON.stringify({ data: document.getElementById(`${method.toLowerCase()}-data`).value })
-              : null,
-        })
-          .then((response) => response.json())
-          .then((data) => console.log("Success:", data))
-          .catch((error) => console.error("Error:", error));
+      if (method !== 'GET' && method !== 'DELETE') {
+        options.body = JSON.stringify(data);
       }
-    </script>
-  </head>
-  <body>
-    <h1>Test HTTP Methods</h1>
 
-    <!-- GET 요청 -->
-    <h2>GET Request</h2>
-    <a href="http://localhost:3000/todos/?n=10&name=hong">일반적인 GET 요청</a>
+      try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log('Success:', result);
+        alert('Success: ' + JSON.stringify(result));
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error: ' + error.message);
+      }
+    }
 
-    <!-- REST 방식 -->
-    <!-- GET 요청 -->
-    <button type="button" onclick="sendRequest('POST', '/1');">REST GET 요청</button>
+    function getTodos() {
+      sendRequest('GET', `http://localhost:3000/todos`);
+    }
 
-    <!-- POST 요청 -->
-    <h2>POST Request</h2>
-    <form onsubmit="event.preventDefault(); sendRequest('POST');">
-      보낼 데이터:
-      <input type="text" id="post-data" name="post-data" />
-      <input type="submit" value="REST POST Request" />
-    </form>
+    function getTodoQuery() {
+      sendRequest('GET', `http://localhost:3000/todosquery?name=hong&id=1`);
+    }
 
-    <!-- PUT 요청 -->
-    <h2>PUT Request</h2>
-    <form onsubmit="event.preventDefault(); sendRequest('PUT');">
-      보낼 데이터:
-      <input type="text" id="put-data" name="put-data" />
-      <input type="submit" value="REST PUT Request" />
-    </form>
+    function getTodo(id) {
+      sendRequest('GET', `http://localhost:3000/todos/${id}`);
+    }
 
-    <!-- DELETE 요청 -->
-    <h2>DELETE Request</h2>
-    <button type="button" onclick="sendRequest('DELETE', '/1');">REST DELETE 요청</button>
-  </body>
+    function addTodo() {
+      const task = document.getElementById('post-task').value;
+      sendRequest('POST', 'http://localhost:3000/todos', { task });
+    }
+
+    function updateTodo() {
+      const id = document.getElementById('put-id').value;
+      const task = document.getElementById('put-task').value;
+      sendRequest('PUT', `http://localhost:3000/todos/${id}`, { task });
+    }
+
+    function deleteTodo() {
+      const id = document.getElementById('delete-id').value;
+      sendRequest('DELETE', `http://localhost:3000/todos/${id}`);
+    }
+  </script>
+</head>
+<body>
+  <h1>Test Express API</h1>
+
+  <h2>GET /todo</h2>
+  <button onclick="getTodoQuery()">Get Todo(요청 파라미터 방식)</button>
+  <button onclick="getTodo(1)">Get Todo 1(REST 방식)</button>
+
+  <h2>GET /todo</h2>
+  <button onclick="getTodos()">Get Todos</button>
+
+  <h2>POST /todos</h2>
+  <form onsubmit="event.preventDefault(); addTodo();">
+    <label for="post-task">Task:</label>
+    <input type="text" id="post-task" required>
+    <button type="submit">Add Todo</button>
+  </form>
+
+  <h2>PUT /todos/:id</h2>
+  <form onsubmit="event.preventDefault(); updateTodo();">
+    <label for="put-id">ID:</label>
+    <input type="number" id="put-id" required>
+    <label for="put-task">Task:</label>
+    <input type="text" id="put-task" required>
+    <button type="submit">Update Todo</button>
+  </form>
+
+  <h2>DELETE /todos/:id</h2>
+  <form onsubmit="event.preventDefault(); deleteTodo();">
+    <label for="delete-id">ID:</label>
+    <input type="number" id="delete-id" required>
+    <button type="submit">Delete Todo</button>
+  </form>
+</body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload and Download Example</title>
+</head>
+<body>
+  <h1>File Upload and Download</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <label for="file">Choose file:</label>
+    <input type="file" id="file" name="file">
+    <br><br>
+    <button type="submit">Upload File</button>
+  </form>
+  <br>
+  <h2>Download Files</h2>
+  <ul id="fileList"></ul>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('/uploads')
+        .then(response => response.json())
+        .then(files => {
+          const fileList = document.getElementById('fileList');
+          files.forEach(file => {
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `/download/${file}`;
+            link.textContent = file;
+            li.appendChild(link);
+            fileList.appendChild(li);
+          });
+        })
+        .catch(error => console.error('Error fetching file list:', error));
+    });
+  </script>
+</body>
+</html>
