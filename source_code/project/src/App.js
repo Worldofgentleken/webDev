@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Logo from './component/nav';
 import Home from './component/home';
 import Chatbot from './component/chatbot';
+import Resume from './component/resume';
 
 function App() {
   return (
